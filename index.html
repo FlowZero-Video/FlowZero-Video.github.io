@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="FlowZero: Zero-Shot Text-to-Video Synthesis with LLM-Driven Dynamic Scene Syntax">
+  <meta name="keywords" content="FlowZero">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FlowZero: Zero-Shot Text-to-Video Synthesis with LLM-Driven Dynamic Scene Syntax</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./videos/videos/favicon.png">
+
+  <style>  
+    table {  
+      font-family: arial, sans-serif;  
+      border-collapse: collapse;  
+      width: 100%;  
+    }  
+      
+    td, th {  
+      border: 2px solid #F1F4F5;  
+      text-align: left;  
+      padding: 8px;  
+    }  
+    
+    tr:nth-child(3n - 1) {  
+      background-color: #F1F4F5;  
+    }  
+
+    tr:nth-child(3n) {  
+      border: 2px solid #FFFFFF;
+    }  
+  </style>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">FlowZero: <br> Zero-Shot Text-to-Video Synthesis with <br> LLM-Driven Dynamic Scene Syntax</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://yulu.net.cn/">Yu Lu</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://ffmpbgrnn.github.io/">Linchao Zhu</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="https://hehefan.github.io/">Hehe Fan</a><sup>2</sup>,</span>
+            </span>
+            <span class="author-block">
+              <a href="https://reler.net/people/yi_yang/index.html">Yi Yang</a><sup>2</sup>,</span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>ReLER Lab, University of Technology Sydney,</span>
+            <span class="author-block"><sup>2</sup>CCAI, Zhejiang University</span>
+          </div>
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <!-- <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span> -->
+              <span class="link-block">
+                <a href=" "
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/aniki-ly/FlowZero"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img id="teaser" autoplay muted loop playsinline height="100%" src="./static/teaser.png" style="width:100%;height:680px;">
+      <p class="subtitle has-text-centered">
+        Zero-shot text-to-video generation. We present a new framework for text-to-video generation with exceptional temporal coherence, featuring realistic object movements, transformations, and background motion within the generated videos.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Text-to-video~(T2V) generation is a rapidly growing research area that aims to translate the scenes, objects, and actions within complex video text into a sequence of coherent visual frames. We present FlowZero, a novel framework that combines Large Language Models (LLMs) with image diffusion models to generate temporally-coherent videos. FlowZero uses LLMs to understand complex spatio-temporal dynamics from text, where LLMs can generate a comprehensive dynamic scene syntax~(DSS) containing scene descriptions, object layouts, and background motion patterns. These elements in DSS are then used to guide the image diffusion model for video generation with smooth object motions and frame-to-frame coherence. Moreover, FlowZero incorporates an iterative self-refinement process, enhancing the alignment between the spatio-temporal layouts and the textual prompts for the videos.  To enhance global coherence, we propose enriching the initial noise of each frame with motion dynamics to control the background movement and camera motion adaptively. By using spatio-temporal syntaxes to guide the diffusion process, FlowZero achieves improvement in zero-shot video synthesis, generating coherent videos with vivid motion. Our code will be open sourced at: <a href="https://github.com/aniki-ly/FlowZero">https://github.com/aniki-ly/FlowZero</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <!-- <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- <video id="teaser" autoplay muted loop playsinline height="100%"> -->
+    <video id="replay-video"
+                 controls
+                 muted
+                 preload
+                 playsinline
+                 height="100%">
+      <source src="./videos/videos/main_video.mp4"
+              type="video/mp4">
+    </video>
+
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+
+<section class="section" id="Method">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Method</h2>
+    <section class="hero method">
+      <div class="container is-max-desktop">
+        <div class="hero-body">
+          <img id="method" autoplay muted loop playsinline height="100%" src="./static/framework.png" style="width:100%;height:100%;">
+          <p>
+            Overview of FlowZero: Starting from a video prompt, we first instruct the LLMs (i.e., GPT4) to generate serial frame-by-frame syntax, including scene descriptions, foreground layouts, and background motion patterns. We employ an iterative self-refinement process to improve the generated spatio-temporal layouts. This process includes implementing a feedback loop where the LLM autonomously verifies and rectifies the spatial and temporal errors of the initial layouts. The loop continues until the confidence score 
+            <span class="math inline">\(C\)</span> for the modified layouts exceeds a predefined threshold <span class="math inline">\(\lambda\)</span>.
+            Next, we perform motion-guided noise shifting (MNS) to obtain the initial noise for each frame <span class="math inline">\(i\)</span>  by shifting the first noise with predicted background motion direcction <span class="math inline">\(d_{i}\)</span> and speed <span class="math inline">\(s_{i}\)</span>. 
+            Then, a U-Net with cross-attention, gated attention, and cross-frame attention is used to obtain <span class="math inline">\(N\)</span> coherent video frames.          
+
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+</section>
+
+
+<section class="section" id="Results">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Results</h2>
+    <section class="hero method">
+    <div class="container is-max-desktop">
+    <div class="hero-body">  
+    <h3 class="title">Text-to-Video</h3>
+    <table class="center">
+      <tr><td></td><td></td><td></td><td></td></tr>
+      <tr>
+        <td><img src="./videos/videos/A butterfly leaving a flower.gif" raw=true></td>
+        <td><img src="./videos/videos/A horse is running from right to left in an open field.gif"></td>
+        <td><img src="./videos/videos/A caterpillar is crawling on a branch, and then it transforms into a butterfly, then it flies away.gif"></td>              
+        <td><img src="./videos/videos/A man and a woman running towards each other, and hugging together.gif"></td>
+      </tr>
+      <tr>
+        <td width=25% style="text-align:center;">"A butterfly leaving a flower"</td>
+        <td width=25% style="text-align:center;">"A horse is running from right to left in an open field"</td>
+        <td width=25% style="text-align:center;">"A caterpillar is crawling on a branch, and then it transforms into a butterfly, then it flies away"</td>
+        <td width=25% style="text-align:center;">"A man and a woman running towards each other, and hugging together"</td>
+      </tr>
+      <tr><td></td><td></td><td></td><td></td></tr>
+      <tr>
+        <td><img src="./videos/videos/Sun rises from the sea.gif" raw=true></td>
+        <td><img src="./videos/videos/Three birds flying from right to left across the sky.gif"></td>
+        <td><img src="./videos/videos/A volcano first dormant, then it erupts with smoke and fire.gif"></td>              
+        <td><img src="./videos/videos/A man is waiting at a bus stop, and after the bus arrives.gif"></td>
+      </tr>
+      <tr>
+        <td width=25% style="text-align:center;">"sun rises from the sea"</td>
+        <td width=25% style="text-align:center;">"Three birds flying from right to left across the sky</td>
+        <td width=25% style="text-align:center;">"A volcano first dormant, then it erupts with smoke and fire"</td>
+        <td width=25% style="text-align:center;">"A man is waiting at a bus stop, and after the bus arrives"</td>
+      </tr>
+      <tr><td></td><td></td><td></td><td></td></tr>
+      <tr>
+        <td><img src="./videos/videos/A jogger is running in the field, then a dog joins him.gif" raw=true></td>
+        <td><img src="./videos/videos/A panda is climbing the tree from bottom to top.gif"></td>
+        <td><img src="./videos/videos/Ironman is surfing on a surfboard in the sea from left to right.gif"></td>              
+        <td><img src="./videos/videos/A soccer player kicks a ball towards another player.gif"></td>
+      </tr>
+      <tr>
+        <td width=25% style="text-align:center;">"A jogger is running in the field, then a dog joins him"</td>
+        <td width=25% style="text-align:center;">"A panda is climbing the tree from bottom to top</td>
+        <td width=25% style="text-align:center;">"Ironman is surfing on a surfboard in the sea from left to right"</td>
+        <td width=25% style="text-align:center;">"A soccer player kicks a ball towards another player"</td>
+      </tr>
+      <tr><td></td><td></td><td></td><td></td></tr>
+      <tr>
+        <td><img src="./videos/videos/A bird rests on a tree, then fly away.gif" raw=true></td>
+        <td><img src="./videos/videos/A balloon floats up into the sky_1.gif"></td>
+        <td><img src="./videos/videos/A plane ascends into the sky.gif"></td>              
+        <td><img src="./videos/videos/A girl is reading a book in a garden as two butterflies flutter in the side and a cloud moves across the sky.gif"></td>
+      </tr>
+      <tr>
+        <td width=25% style="text-align:center;">"A bird rests on a tree, then fly away"</td>
+        <td width=25% style="text-align:center;">"A balloon floats up into the sky</td>
+        <td width=25% style="text-align:center;">"A plane ascends into the sky"</td>
+        <td width=25% style="text-align:center;">"A girl is reading a book in a garden as two butterflies flutter in the side and a cloud moves across the sky"</td>
+      </tr>
+    </table>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <p> If you use our work in your research, please cite our publication: </p>
+    <pre><code>@article{text2video-zero,
+    title={Text2Video-Zero: Text-to-Image Diffusion Models are Zero-Shot Video Generators},
+    author={Khachatryan, Levon and Movsisyan, Andranik and Tadevosyan, Vahram and Henschel, Roberto and Wang, Zhangyang and Navasardyan, Shant and Shi, Humphrey},
+    journal={arXiv preprint arXiv:2303.13439},
+    year={2023}
+  }
+    </code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <!-- <a class="icon-link" href="./static/videos/nerfies_paper.pdf"> -->
+      <a class="icon-link" href="https://arxiv.org/pdf/2303.13439.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <!-- <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled> -->
+      <a class="icon-link" href="https://github.com/aniki-ly/FlowZero" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            Website adapted from the following <a href="https://text2video-zero.github.io/">template</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
