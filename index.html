@@ -70,7 +70,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">FlowZero: <br> Zero-Shot Text-to-Video Synthesis with <br> LLM-Driven Dynamic Scene Syntax</h1>
+          <h1 class="title is-1 publication-title">FlowZero: <br> Dynamic Scene Modeling for <br> Zero-Shot Text-to-Video Generation</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="https://yulu.net.cn/">Yu Lu</a><sup>1</sup>,</span>
@@ -142,7 +142,7 @@
     <div class="hero-body">
       <img id="teaser" autoplay muted loop playsinline height="100%" src="./static/teaser.png" style="width:100%;height:680px;">
       <p class="subtitle has-text-centered">
-        Zero-shot text-to-video generation. We present a new framework for text-to-video generation with exceptional temporal coherence, featuring realistic object movements, transformations, and background motion within the generated videos.
+        Zero-shot text-to-video generation. We present a new framework for text-to-video generation with exceptional spatial-temporal dynamics, featuring realistic object movements, transformations, and background motion within the generated videos.
       </p>
     </div>
   </div>
@@ -157,7 +157,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Text-to-video~(T2V) generation is a rapidly growing research area that aims to translate the scenes, objects, and actions within complex video text into a sequence of coherent visual frames. We present FlowZero, a novel framework that combines Large Language Models (LLMs) with image diffusion models to generate temporally-coherent videos. FlowZero uses LLMs to understand complex spatio-temporal dynamics from text, where LLMs can generate a comprehensive dynamic scene syntax~(DSS) containing scene descriptions, object layouts, and background motion patterns. These elements in DSS are then used to guide the image diffusion model for video generation with smooth object motions and frame-to-frame coherence. Moreover, FlowZero incorporates an iterative self-refinement process, enhancing the alignment between the spatio-temporal layouts and the textual prompts for the videos.  To enhance global coherence, we propose enriching the initial noise of each frame with motion dynamics to control the background movement and camera motion adaptively. By using spatio-temporal syntaxes to guide the diffusion process, FlowZero achieves improvement in zero-shot video synthesis, generating coherent videos with vivid motion. Our code will be open sourced at: <a href="https://github.com/aniki-ly/FlowZero">https://github.com/aniki-ly/FlowZero</a>
+            We present FlowZero, a framework for text-to-video generation that leverages the spatio-temporal reasoning capabilities of Large Language Models (LLMs) to guide image diffusion models. At its core, FlowZero features the Dynamic Scene Modeling Engine (DSME), which combines a structured representation called Dynamic Scene Syntax (DSS) and an iterative self-refinement mechanism. DSS encapsulates frame-level scene descriptions, object layouts, and background motion patterns. By using DSS, the framework enables precise modeling of spatio-temporal dynamics including object trajectories and semantic scene evolution derived from textual prompts. The iterative self-refinement mechanism further ensures spatial and temporal coherence by aligning generated layouts with input descriptions across frames. Additionally, a motion-guided noise shifting technique enhances global background consistency, leading to smoother and more realistic video synthesis. Extensive experiments, including qualitative, quantitative, and ablation studies, demonstrate that FlowZero produces high-quality, dynamic videos aligned with complex textual prompts. The generated videos effectively showcase directed object motions, semantic transformations, and complex object interactions, all without requiring additional video-specific training data.
           </p>
         </div>
       </div>
